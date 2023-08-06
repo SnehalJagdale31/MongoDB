@@ -1,0 +1,140 @@
+
+test> show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+test> use durgadb
+switched to db durgadb
+durgadb> db.createCollection("employees")
+{ ok: 1 }
+durgadb> show dbs
+admin    40.00 KiB
+config   72.00 KiB
+durgadb   8.00 KiB
+local    40.00 KiB
+durgadb> show collections
+employees
+durgadb> db.createCollection("students")
+{ ok: 1 }
+durgadb> show collections
+employees
+students
+durgadb> db.students.drop()
+true
+durgadb> show collections
+employees
+durgadb> show dbs
+admin    40.00 KiB
+config   96.00 KiB
+durgadb   8.00 KiB
+local    40.00 KiB
+durgadb> db.dropDatabase
+[Function: dropDatabase] AsyncFunction {
+  apiVersions: [ 1, Infinity ],
+  returnsPromise: true,
+  serverVersions: [ '0.0.0', '999.999.999' ],
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  returnType: { type: 'unknown', attributes: {} },
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+durgadb> db.dropDatabase()
+{ ok: 1, dropped: 'durgadb' }
+durgadb> show dbs
+admin   40.00 KiB
+config  96.00 KiB
+local   40.00 KiB
+durgadb> db.getname()
+TypeError: db.getname is not a function
+durgadb> db.getName()
+durgadb
+durgadb> use durgadb
+already on db durgadb
+durgadb> db.createCollection("employee")
+{ ok: 1 }
+durgadb> db.employee.insertOne({eno:200,ename:"Sunny",esal:2000:eaddr:"mumbai"})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:54)
+
+> 1 | db.employee.insertOne({eno:200,ename:"Sunny",esal:2000:eaddr:"mumbai"})
+    |                                                       ^
+  2 |
+
+durgadb> db.employee.insertOne({eno:200,ename:"Sunny",esal:2000,eaddr:"mumbai"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64cf613ae2c05991de999502")
+}
+durgadb> db.employee.insertOne({eno:100,ename:"Bunny",esal:1000,eaddr:"hyd"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64cf6159e2c05991de999503")
+}
+durgadb> db.employee.insertOne({eno:300,ename:"jonny",esal:3000,eaddr:"delhi"})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64cf6350e2c05991de999504")
+}
+durgadb> db.collection.find()
+
+durgadb> db.employees.find()
+
+durgadb> db.employee.find()
+[
+  {
+    _id: ObjectId("64cf613ae2c05991de999502"),
+    eno: 200,
+    ename: 'Sunny',
+    esal: 2000,
+    eaddr: 'mumbai'
+  },
+  {
+    _id: ObjectId("64cf6159e2c05991de999503"),
+    eno: 100,
+    ename: 'Bunny',
+    esal: 1000,
+    eaddr: 'hyd'
+  },
+  {
+    _id: ObjectId("64cf6350e2c05991de999504"),
+    eno: 300,
+    ename: 'jonny',
+    esal: 3000,
+    eaddr: 'delhi'
+  }
+]
+durgadb> db.employee.updateOne({ename:"jonny"},{esal:5000})
+MongoInvalidArgumentError: Update document requires atomic operators
+durgadb> db.employee.updateOne({ename:"jonny"},{$set:{esal:5000}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+
+durgadb> db.employee.deleteOne({ename:"jonny"})
+{ acknowledged: true, deletedCount: 1 }
+durgadb> db.employee.find().pretty()
+[
+  {
+    _id: ObjectId("64cf613ae2c05991de999502"),
+    eno: 200,
+    ename: 'Sunny',
+    esal: 2000,
+    eaddr: 'mumbai'
+  },
+  {
+    _id: ObjectId("64cf6159e2c05991de999503"),
+    eno: 100,
+    ename: 'Bunny',
+    esal: 1000,
+    eaddr: 'hyd'
+  }
+]

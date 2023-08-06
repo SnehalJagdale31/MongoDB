@@ -138,3 +138,7 @@ durgadb> db.employee.find().pretty()
     eaddr: 'hyd'
   }
 ]
+
+//capped collection
+durgadb> db.createCollection("employee2",{capped:true,size:365675,max:1000})
+{ ok: 1 }

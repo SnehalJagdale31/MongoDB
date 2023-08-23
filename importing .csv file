@@ -1,0 +1,122 @@
+//execute command on terminal under mongod command
+(base) snehal@Snehals-MacBook-Air Desktop % mongoimport -d storedb -c cancer --type csv --headerline --drop cancer.csv  
+2023-08-23T16:23:21.093+0530	connected to: mongodb://localhost/
+2023-08-23T16:23:21.094+0530	dropping: storedb.cancer
+2023-08-23T16:23:21.135+0530	301 document(s) imported successfully. 0 document(s) failed to import.
+
+
+//inside shell use mongosh to open shell
+test> show databases
+admin    40.00 KiB
+config   72.00 KiB
+durgadb  80.00 KiB
+local    72.00 KiB
+storedb   8.00 KiB
+test> use storedb
+switched to db storedb
+storedb> show collections
+cancer
+storedb> db.cancer.find().pretty()
+[
+  {
+    _id: ObjectId("64e5e521caeb76584d883f0e"),
+    cancer: 3,
+    population: 746
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f0f"),
+    cancer: 5,
+    population: 1096
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f10"),
+    cancer: 4,
+    population: 681
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f11"),
+    cancer: 5,
+    population: 1098
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f12"),
+    cancer: 1,
+    population: 445
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f13"),
+    cancer: 7,
+    population: 1125
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f14"),
+    cancer: 5,
+    population: 1114
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f15"),
+    cancer: 3,
+    population: 677
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f16"),
+    cancer: 5,
+    population: 976
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f17"),
+    cancer: 5,
+    population: 1236
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f18"),
+    cancer: 0,
+    population: 559
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f19"),
+    cancer: 1,
+    population: 950
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f1a"),
+    cancer: 6,
+    population: 1285
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f1b"),
+    cancer: 4,
+    population: 869
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f1c"),
+    cancer: 6,
+    population: 1598
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f1d"),
+    cancer: 6,
+    population: 1635
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f1e"),
+    cancer: 11,
+    population: 1667
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f1f"),
+    cancer: 4,
+    population: 1696
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f20"),
+    cancer: 7,
+    population: 1792
+  },
+  {
+    _id: ObjectId("64e5e521caeb76584d883f21"),
+    cancer: 7,
+    population: 1795
+  }
+]
+Type "it" for more

@@ -127,3 +127,6 @@ Type "it" for more
 var mycursor =db.cancer.find()
  while(mycursor.hasNext()){ print(mycursor.next());}
 
+//or we can use
+while(mycursor.hasNext()){ printjson(mycursor.next());}
+

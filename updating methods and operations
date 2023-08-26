@@ -40,3 +40,6 @@ employees> db.employees.updateOne({ename:"Anny"},{$set:{esal:1000}})
 employees> db.employees.find({ename:"Anny"},{_id:0,ename:1,esal:1})
 [ { ename: 'Anny', esal: 1000 } ]
 employees> 
+
+
+

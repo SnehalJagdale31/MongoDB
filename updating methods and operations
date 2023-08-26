@@ -1,0 +1,42 @@
+
+test> show databases
+admin    40.00 KiB
+config   72.00 KiB
+durgadb  80.00 KiB
+local    72.00 KiB
+storedb  44.00 KiB
+test> use employees
+switched to db employees
+employees> db.employees.insert({_id:2,eno:200,ename:"Anny",esal:2000,eaddr:"pune"})
+{ acknowledged: true, insertedIds: { '0': 2 } }
+employees> db.employees.insert({_id:1,eno:300,ename:"Snny",esal:3000,eaddr:"mumbai"})
+{ acknowledged: true, insertedIds: { '0': 1 } }
+employees> db.employees.insert({_id:4,eno:400,ename:"Jonny",esal:4000,eaddr:"hydrabad"})
+{ acknowledged: true, insertedIds: { '0': 4 } }
+employees> db.employees.insert({_id:5,eno:500,ename:"Ronny",esal:5000,eaddr:"indore"})
+{ acknowledged: true, insertedIds: { '0': 5 } }
+employees> db.employees.insert({_id:6,eno:600,ename:"Monny",esal:6000,eaddr:"jaipur"})
+{ acknowledged: true, insertedIds: { '0': 6 } }
+employees> db.employees.find()
+[
+  { _id: 2, eno: 200, ename: 'Anny', esal: 2000, eaddr: 'pune' },
+  { _id: 1, eno: 300, ename: 'Snny', esal: 3000, eaddr: 'mumbai' },
+  { _id: 4, eno: 400, ename: 'Jonny', esal: 4000, eaddr: 'hydrabad' },
+  { _id: 5, eno: 500, ename: 'Ronny', esal: 5000, eaddr: 'indore' },
+  { _id: 6, eno: 600, ename: 'Monny', esal: 6000, eaddr: 'jaipur' }
+]
+
+//update the salary of anny to 1000
+
+
+employees> db.employees.updateOne({ename:"Anny"},{$set:{esal:1000}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+employees> db.employees.find({ename:"Anny"},{_id:0,ename:1,esal:1})
+[ { ename: 'Anny', esal: 1000 } ]
+employees> 

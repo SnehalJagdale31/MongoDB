@@ -1,4 +1,4 @@
-//execute command on terminal under mongod command
+//To import csv file in mongodb execute below command on terminal under mongod command
 (base) snehal@Snehals-MacBook-Air Desktop % mongoimport -d storedb -c cancer --type csv --headerline --drop cancer.csv  
 2023-08-23T16:23:21.093+0530	connected to: mongodb://localhost/
 2023-08-23T16:23:21.094+0530	dropping: storedb.cancer
